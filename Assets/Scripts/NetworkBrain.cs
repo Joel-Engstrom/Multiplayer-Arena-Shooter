@@ -10,26 +10,43 @@ public class NetworkBrain : NetworkManager
 {
     public void StartHosting()
     {
-        NetworkServer.Reset();
-        base.StartHost();
+        StartMatchMaker();
+        matchMaker.CreateMatch("Joels Spel", 4, true, "", "", "", 0, 0, OnMatchCreated);
     }
 
-    private void OnEnable()
+    private void OnMatchCreated(bool success, string extendedInfo, MatchInfo responseData)
     {
-        RefreshMatches();
+        base.StartHost(responseData);
+    }
+
+    private void Awake()
+    {
+        InvokeRepeating("RefreshMatches", 0f, 3f);
     }
 
     private void RefreshMatches()
     {
         if (matchMaker == null)
-        {
             StartMatchMaker();
-        }
-        matchMaker.ListMatches(0, 10, "", true, 0, 0, HandleListMatchesComplete);
+
+        matchMaker.ListMatches(0, 10, "", false, 0, 0, HandleListMatchesComplete);
     }
 
     private void HandleListMatchesComplete(bool success, string extendedInfo, List<MatchInfoSnapshot> matchList)
     {
         AvailableMatchesList.HandleNewMatchList(matchList);
+    }
+
+    public void JoinMatch(MatchInfoSnapshot match)
+    {
+        if (matchMaker == null)
+            StartMatchMaker();
+
+        matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, HandleJoinedMatch);
+    }
+
+    private void HandleJoinedMatch(bool success, string extendedInfo, MatchInfo responseData)
+    {
+        StartClient(responseData);
     }
 }

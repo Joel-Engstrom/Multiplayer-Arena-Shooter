@@ -24,8 +24,9 @@ public class MatchListPanel : MonoBehaviour
     {
         foreach (var match in matches)
         {
+            Debug.Log("Skapade en knapp");
             var button = Instantiate(JoinButtonPrefab);
-            button.Initialize(match);
+            button.Initialize(match, transform);
         }
     }
 
@@ -36,10 +37,5 @@ public class MatchListPanel : MonoBehaviour
         {
             Destroy(button.gameObject);
         }
-    }
-
-    void Update()
-    {
-
     }
 }
