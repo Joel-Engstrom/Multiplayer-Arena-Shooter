@@ -5,13 +5,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
+using TMPro;
 
 public class NetworkBrain : NetworkManager
 {
+    public TMP_InputField MatchName;
+    public TMP_InputField MaxPlayers;
+
+    private int MaxPlayersInt;
+
     public void StartHosting()
     {
         StartMatchMaker();
-        matchMaker.CreateMatch("Joels Spel", 4, true, "", "", "", 0, 0, OnMatchCreated);
+        if (int.TryParse(MaxPlayers.text, out MaxPlayersInt))
+        {
+            MaxPlayersInt = int.Parse(MaxPlayers.text);
+        } else
+        {
+            MaxPlayersInt = 4;
+        }
+        matchMaker.CreateMatch(MatchName.text, (uint)MaxPlayersInt, true, "", "", "", 0, 0, OnMatchCreated);
     }
 
     private void OnMatchCreated(bool success, string extendedInfo, MatchInfo responseData)
