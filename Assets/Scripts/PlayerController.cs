@@ -36,6 +36,15 @@ public class PlayerController : MonoBehaviour
     {
         InputMagnitude();
 
+        if (Physics.CheckSphere(GroundCheck.transform.position, .3f, GroundLayer))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
         isGrounded = Controller.isGrounded;
 
         ActiveController = InputManager.ActiveDevice;
@@ -82,21 +91,5 @@ public class PlayerController : MonoBehaviour
         {
             PlayerAndMoveRotation();
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (Physics.CheckSphere(GroundCheck.transform.position, .3f, GroundLayer))
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-
-
-
-        
     }
 }
