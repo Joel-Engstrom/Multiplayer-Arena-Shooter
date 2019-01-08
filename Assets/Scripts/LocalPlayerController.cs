@@ -6,13 +6,13 @@ using Cinemachine;
 
 public class LocalPlayerController : NetworkBehaviour
 {
-    private Camera PlayerCam;
-    private CinemachineFreeLook CineMachineCamera;
+    public Camera PlayerCam;
+    public CinemachineFreeLook CineMachineCamera;
 
-    void Awake()
+    void FixedUpdate()
     {
-        PlayerCam = GetComponentInChildren<Camera>();
-        CineMachineCamera = GetComponentInChildren<CinemachineFreeLook>();
+        //PlayerCam = GetComponentInChildren<Camera>();
+        //CineMachineCamera = GetComponentInChildren<CinemachineFreeLook>();
 
         if (isLocalPlayer)
         {

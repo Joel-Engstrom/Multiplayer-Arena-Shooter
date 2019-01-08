@@ -26,11 +26,10 @@ public class PlayerController : NetworkBehaviour
     private Vector3 MoveVector;
     private float VerticalVel;
 
-
-    private void Awake()
+    private void Start()
     {
         Controller = GetComponent<CharacterController>();
-        PlayerCam = GetComponentInChildren<Camera>();
+        PlayerCam = transform.GetChild(1).gameObject.GetComponent<Camera>();
     }
 
     private void Update()
@@ -39,6 +38,8 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
+
+        ActiveController = InputManager.ActiveDevice;
 
         InputMagnitude();
 
@@ -53,14 +54,12 @@ public class PlayerController : NetworkBehaviour
 
         isGrounded = Controller.isGrounded;
 
-        ActiveController = InputManager.ActiveDevice;
-
         ValueX = ActiveController.GetControl(InputControlType.LeftStickX);
         ValueZ = ActiveController.GetControl(InputControlType.LeftStickY);
 
         if (isGrounded)
         {
-            VerticalVel -= 0;
+            VerticalVel = 0;
         } else
         {
             VerticalVel -= 2;
