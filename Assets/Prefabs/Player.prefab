@@ -149,8 +149,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109243746}
-  m_LocalRotation: {x: -0.0072470447, y: 0.9540968, z: 0.02315743, w: 0.29851395}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0213721, y: -0.15036814, z: -0.0032529985, w: 0.9883937}
+  m_LocalPosition: {x: -0.0000006743494, y: 0, z: 0.00000067434985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 244191642}
@@ -350,7 +350,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445720549}
-  m_LocalRotation: {x: -0.0072462345, y: 0.9540968, z: 0.023157664, w: 0.29851392}
+  m_LocalRotation: {x: -0.021372285, y: -0.15036811, z: -0.0032521696, w: 0.9883937}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -538,14 +538,14 @@ GameObject:
   - component: {fileID: 992966341}
   - component: {fileID: 992966343}
   - component: {fileID: 992966342}
-  - component: {fileID: 992966345}
+  - component: {fileID: 8298673733950908664}
   m_Layer: 0
   m_Name: Cinemachine Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &992966341
 Transform:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992966340}
   m_LocalRotation: {x: -0, y: -0.9238796, z: -0, w: 0.3826833}
-  m_LocalPosition: {x: 0.64312756, y: 1.6405361, z: -4.757528}
+  m_LocalPosition: {x: 1.7512207, y: 1.640564, z: 4.470002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 109243747}
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Damping: 0.22
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
---- !u!114 &992966345
+--- !u!114 &8298673733950908664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -707,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 992966343}
+  PlayerCam: {fileID: 2083981001}
 --- !u!1 &1439755044
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +732,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439755044}
-  m_LocalRotation: {x: -0.007244884, y: 0.9540968, z: 0.023158092, w: 0.29851392}
+  m_LocalRotation: {x: -0.021372486, y: -0.15036811, z: -0.0032507996, w: 0.9883937}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -801,7 +802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2083980998
 Transform:
   m_ObjectHideFlags: 0
@@ -809,8 +810,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083980997}
-  m_LocalRotation: {x: 0.024167946, y: -0.08932601, z: -0.0021676798, w: -0.9957069}
-  m_LocalPosition: {x: 0.64312756, y: 1.6405361, z: -4.757528}
+  m_LocalRotation: {x: -0.005174483, y: -0.97070014, z: -0.020990102, w: 0.23931974}
+  m_LocalPosition: {x: 1.7512207, y: 1.640564, z: 4.470002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3301629698641865953}
@@ -1040,6 +1041,8 @@ GameObject:
   - component: {fileID: 1784241110}
   - component: {fileID: 1784241109}
   - component: {fileID: 6773692803086204888}
+  - component: {fileID: 934186155703976995}
+  - component: {fileID: 3351625660625058514}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1193,7 +1196,41 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &934186155703976995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887290311052433901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 4
+  m_SendInterval: 0.04761905
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &3351625660625058514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887290311052433901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2edd41a22c3d34ebcb47437d378681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4126823174544746344
 GameObject:
   m_ObjectHideFlags: 0

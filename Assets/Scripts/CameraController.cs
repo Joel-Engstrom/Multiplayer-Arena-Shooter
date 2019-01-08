@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 using Cinemachine;
+using UnityEngine.Networking;
 
 public class CameraController : MonoBehaviour
 {
     public CinemachineFreeLook Cam;
+    public Camera PlayerCam;
 
     private InputDevice Controller = InputManager.ActiveDevice;
 

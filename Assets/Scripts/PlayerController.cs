@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     InputDevice ActiveController;
 
@@ -34,6 +35,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         InputMagnitude();
 
         if (Physics.CheckSphere(GroundCheck.transform.position, .3f, GroundLayer))

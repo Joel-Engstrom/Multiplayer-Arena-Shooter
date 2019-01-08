@@ -6504,10 +6504,10 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  m_ShowLobbyGUI: 0
+  m_ShowLobbyGUI: 1
   m_MaxPlayers: 4
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 4
+  m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 1069370621587163435, guid: a8d52544603dd8d4eb9bd833be331741,
     type: 3}
   m_GamePlayerPrefab: {fileID: 3887290311052433901, guid: 24a9845ad0801a94db82b926dfdfd428,
