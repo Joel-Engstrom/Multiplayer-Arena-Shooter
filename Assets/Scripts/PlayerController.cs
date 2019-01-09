@@ -32,10 +32,10 @@ public class PlayerController : NetworkBehaviour
         CharacterInputs = new CharacterInputController();
 
         CharacterInputs.Left.AddDefaultBinding(Key.LeftArrow);
-        CharacterInputs.Right.AddDefaultBinding(InputControlType.LeftStickY);
+        CharacterInputs.Left.AddDefaultBinding(InputControlType.LeftStickY);
 
-        CharacterInputs.MoveVertical.AddDefaultBinding(Key.RightArrow);
-        CharacterInputs.MoveVertical.AddDefaultBinding(InputControlType.LeftStickY);
+        CharacterInputs.Right.AddDefaultBinding(Key.RightArrow);
+        CharacterInputs.Right.AddDefaultBinding(InputControlType.LeftStickY);
 
         CharacterInputs.Jump.AddDefaultBinding(Key.Space);
         CharacterInputs.Jump.AddDefaultBinding(InputControlType.Action1);
@@ -43,13 +43,13 @@ public class PlayerController : NetworkBehaviour
         CharacterInputs.Shoot.AddDefaultBinding(Mouse.LeftButton);
         CharacterInputs.Shoot.AddDefaultBinding(InputControlType.RightTrigger);
 
-        CharacterInputs.LookX.AddDefaultBinding(Mouse.PositiveX);
-        CharacterInputs.LookX.AddDefaultBinding(Mouse.NegativeX);
-        CharacterInputs.LookX.AddDefaultBinding(InputControlType.RightStickX);
+        CharacterInputs.MousePositiveX.AddDefaultBinding(Mouse.PositiveX);
+        CharacterInputs.MouseNegativeX.AddDefaultBinding(Mouse.NegativeX);
+        CharacterInputs.MouseX.AddDefaultBinding(InputControlType.RightStickX);
 
-        CharacterInputs.LookY.AddDefaultBinding(Mouse.PositiveY);
-        CharacterInputs.LookY.AddDefaultBinding(Mouse.NegativeY);
-        CharacterInputs.LookY.AddDefaultBinding(InputControlType.RightStickY);
+        CharacterInputs.MousePositiveY.AddDefaultBinding(Mouse.PositiveY);
+        CharacterInputs.MouseNegativeY.AddDefaultBinding(Mouse.NegativeY);
+        CharacterInputs.MouseY.AddDefaultBinding(InputControlType.RightStickY);
 
 
         Controller = GetComponent<CharacterController>();
