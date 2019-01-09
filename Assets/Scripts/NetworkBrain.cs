@@ -17,12 +17,16 @@ public class NetworkBrain : NetworkManager
     public void StartHosting()
     {
         StartMatchMaker();
-        if (int.TryParse(MaxPlayers.text, out MaxPlayersInt))
+        if (MatchName != null && MaxPlayers != null)
         {
-            MaxPlayersInt = int.Parse(MaxPlayers.text);
-        } else
-        {
-            MaxPlayersInt = 4;
+            if (int.TryParse(MaxPlayers.text, out MaxPlayersInt))
+            {
+                MaxPlayersInt = int.Parse(MaxPlayers.text);
+            }
+            else
+            {
+                MaxPlayersInt = 4;
+            }
         }
         matchMaker.CreateMatch(MatchName.text, (uint)MaxPlayersInt, true, "", "", "", 0, 0, OnMatchCreated);
     }

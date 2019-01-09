@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 using UnityEngine.Networking;
+using System;
 
 public class PlayerController : NetworkBehaviour
 {
-    InputDevice ActiveController;
+    CharacterInputController CharacterInputs;
 
     public float Speed;
 
@@ -28,6 +29,29 @@ public class PlayerController : NetworkBehaviour
 
     private void Start()
     {
+        CharacterInputs = new CharacterInputController();
+
+        CharacterInputs.Left.AddDefaultBinding(Key.LeftArrow);
+        CharacterInputs.Right.AddDefaultBinding(InputControlType.LeftStickY);
+
+        CharacterInputs.MoveVertical.AddDefaultBinding(Key.RightArrow);
+        CharacterInputs.MoveVertical.AddDefaultBinding(InputControlType.LeftStickY);
+
+        CharacterInputs.Jump.AddDefaultBinding(Key.Space);
+        CharacterInputs.Jump.AddDefaultBinding(InputControlType.Action1);
+
+        CharacterInputs.Shoot.AddDefaultBinding(Mouse.LeftButton);
+        CharacterInputs.Shoot.AddDefaultBinding(InputControlType.RightTrigger);
+
+        CharacterInputs.LookX.AddDefaultBinding(Mouse.PositiveX);
+        CharacterInputs.LookX.AddDefaultBinding(Mouse.NegativeX);
+        CharacterInputs.LookX.AddDefaultBinding(InputControlType.RightStickX);
+
+        CharacterInputs.LookY.AddDefaultBinding(Mouse.PositiveY);
+        CharacterInputs.LookY.AddDefaultBinding(Mouse.NegativeY);
+        CharacterInputs.LookY.AddDefaultBinding(InputControlType.RightStickY);
+
+
         Controller = GetComponent<CharacterController>();
         PlayerCam = transform.GetChild(1).gameObject.GetComponent<Camera>();
     }
@@ -39,7 +63,15 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        ActiveController = InputManager.ActiveDevice;
+        if (CharacterInputs.Jump.WasPressed)
+        {
+            PerformJump();
+        }
+
+        if (true)
+        {
+
+        }
 
         InputMagnitude();
 
@@ -54,9 +86,6 @@ public class PlayerController : NetworkBehaviour
 
         isGrounded = Controller.isGrounded;
 
-        ValueX = ActiveController.GetControl(InputControlType.LeftStickX);
-        ValueZ = ActiveController.GetControl(InputControlType.LeftStickY);
-
         if (isGrounded)
         {
             VerticalVel = 0;
@@ -67,6 +96,11 @@ public class PlayerController : NetworkBehaviour
         MoveVector = new Vector3(0, VerticalVel, 0);
         Controller.Move(MoveVector);
 
+    }
+
+    private void PerformJump()
+    {
+        throw new NotImplementedException();
     }
 
     private void PlayerAndMoveRotation()
