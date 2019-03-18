@@ -12,7 +12,8 @@ public class PlayerController : NetworkBehaviour
     [Header("Settings")]
     public float speed = 10f;
     public float jumpStrength = 5f;
-    public float lookSpeed = .5f;
+    public float lookSpeed = 2f;
+    public float strafeVar = 0.1f;
 
     [Header("Objects & Layers")]
     public LayerMask groundLayer;
@@ -31,6 +32,10 @@ public class PlayerController : NetworkBehaviour
     private Vector3 lookDirection;
     private Vector3 headDirection;
 
+    private float downForce = 0f;
+
+    private bool useController = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,32 +48,69 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         ActiveController = InputManager.ActiveDevice;
 
-        moveHorizontal = ActiveController.LeftStickX;
-        moveVertical = ActiveController.LeftStickY;
+        if (Input.GetKey(KeyCode.F9))
+        {
+            useController = true;
+        }
+        else if (Input.GetKey(KeyCode.F10))
+        {
+            useController = false;
+        }
 
-        lookHorizontal = ActiveController.RightStickX;
-        lookVertical = ActiveController.RightStickY;
+        if (useController)
+        {
+            moveHorizontal = ActiveController.LeftStickX;
+            moveVertical = ActiveController.LeftStickY;
+
+            lookHorizontal = ActiveController.RightStickX;
+            lookVertical = ActiveController.RightStickY;
+        } else
+        {
+            moveHorizontal = Input.GetAxisRaw("Horizontal");
+            moveVertical = -Input.GetAxisRaw("Vertical");
+
+            lookHorizontal = Input.GetAxisRaw("Mouse X");
+            lookVertical = -Input.GetAxisRaw("Mouse Y");
+        }
 
         if (Physics.CheckSphere(groundCheck.transform.position, .3f, groundLayer))
         {
             isGrounded = true;
+            downForce = 0f;
         }
         else
         {
             isGrounded = false;
+            rb.AddForce(new Vector3(0,0,downForce += Time.deltaTime * 2f));
         }
     }
 
     private void FixedUpdate()
     {
-        moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
-        rb.AddForce(moveDirection * speed);
+        //På Marken
+        if (isGrounded)
+        {
+            rb.AddForce(transform.right * speed * moveHorizontal);
+            rb.AddForce(transform.forward * speed * -moveVertical);
+        }
+        else //I luften (Strafea)
+        {
+            rb.AddForce(transform.right * speed * moveHorizontal * strafeVar);
+            rb.AddForce(transform.forward * speed * -moveVertical * strafeVar);
+        }
+
+        if (ActiveController.Action1 && isGrounded)
+        {
+            rb.AddForce(transform.up * jumpStrength, ForceMode.Impulse);
+        }
 
         lookDirection = new Vector3(0, lookHorizontal, 0);
         headDirection = new Vector3(lookVertical, 0, 0);
-        transform.Rotate(lookDirection);
-        head.transform.Rotate(headDirection);
+        transform.Rotate(lookDirection * lookSpeed);
+        head.transform.Rotate(headDirection * lookSpeed);
     }
 }
