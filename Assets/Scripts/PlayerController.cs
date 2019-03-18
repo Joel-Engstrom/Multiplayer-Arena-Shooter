@@ -43,15 +43,7 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        if (CharacterInputs.Jump.WasPressed)
-        {
-            PerformJump();
-        }
-
-        if (true)
-        {
-
-        }
+        ActiveController = InputManager.ActiveDevice;
 
         moveHorizontal = ActiveController.LeftStickX;
         moveVertical = ActiveController.LeftStickY;
@@ -71,11 +63,11 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        moveDirection = new Vector3(moveHorizontal,0, moveVertical);
+        moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
         rb.AddForce(moveDirection * speed);
 
-        lookDirection = new Vector3(0, lookHorizontal,0);
-        headDirection = new Vector3(lookVertical,0,0);
+        lookDirection = new Vector3(0, lookHorizontal, 0);
+        headDirection = new Vector3(lookVertical, 0, 0);
         transform.Rotate(lookDirection);
         head.transform.Rotate(headDirection);
     }
