@@ -43,7 +43,15 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        ActiveController = InputManager.ActiveDevice;
+        if (CharacterInputs.Jump.WasPressed)
+        {
+            PerformJump();
+        }
+
+        if (true)
+        {
+
+        }
 
         moveHorizontal = ActiveController.LeftStickX;
         moveVertical = ActiveController.LeftStickY;
