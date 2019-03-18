@@ -52,11 +52,11 @@ public class PlayerController : NetworkBehaviour
         Cursor.visible = false;
         ActiveController = InputManager.ActiveDevice;
 
-        if (Input.GetKey(KeyCode.F9))
+        if (Input.GetKeyDown(KeyCode.F9))
         {
             useController = true;
         }
-        else if (Input.GetKey(KeyCode.F10))
+        else if (Input.GetKeyDown(KeyCode.F10))
         {
             useController = false;
         }
@@ -91,6 +91,10 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         //På Marken
         if (isGrounded)
         {
@@ -103,10 +107,20 @@ public class PlayerController : NetworkBehaviour
             rb.AddForce(transform.forward * speed * -moveVertical * strafeVar);
         }
 
-        if (ActiveController.Action1 && isGrounded)
+        if (useController)
         {
-            rb.AddForce(transform.up * jumpStrength, ForceMode.Impulse);
+            if (ActiveController.Action1 && isGrounded)
+            {
+                rb.AddForce(transform.up * jumpStrength, ForceMode.Impulse);
+            }
+        } else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rb.AddForce(transform.up * jumpStrength, ForceMode.Impulse);
+            }
         }
+        
 
         lookDirection = new Vector3(0, lookHorizontal, 0);
         headDirection = new Vector3(lookVertical, 0, 0);
