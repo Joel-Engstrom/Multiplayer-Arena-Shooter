@@ -1,35 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using InControl;
 using UnityEngine.Networking;
+using InControl;
 
 public class PlayerController : NetworkBehaviour
 {
-    InputDevice ActiveController;
+    [SerializeField]
+    private InputDevice ActiveController;
 
-    public float Speed;
+    [Header("Settings")]
+    public float speed = 10f;
+    public float jumpStrength = 5f;
+    public float lookSpeed = .5f;
 
-    public LayerMask GroundLayer;
-    public GameObject GroundCheck;
+    [Header("Objects & Layers")]
+    public LayerMask groundLayer;
+    public GameObject groundCheck;
+    public GameObject head;
 
-    private CharacterController Controller;
-    private Camera PlayerCam;
-    private float ValueX;
-    private float ValueZ;
-    private bool isGrounded;
-    private Vector3 DesiredMoveDirection;
-    private bool BlockRotationPlayer;
-    private bool BlockRotationSpeed;
-    public float DesiredRotationSpeed;
-    public float AllowPlayerRotation;
-    private Vector3 MoveVector;
-    private float VerticalVel;
+    private bool isGrounded = false;
+    private Rigidbody rb;
 
-    private void Start()
+    private float moveHorizontal;
+    private float moveVertical;
+    private Vector3 moveDirection;
+
+    private float lookHorizontal;
+    private float lookVertical;
+    private Vector3 lookDirection;
+    private Vector3 headDirection;
+
+    private void Awake()
     {
-        Controller = GetComponent<CharacterController>();
-        PlayerCam = transform.GetChild(1).gameObject.GetComponent<Camera>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -41,9 +45,13 @@ public class PlayerController : NetworkBehaviour
 
         ActiveController = InputManager.ActiveDevice;
 
-        InputMagnitude();
+        moveHorizontal = ActiveController.LeftStickX;
+        moveVertical = ActiveController.LeftStickY;
 
-        if (Physics.CheckSphere(GroundCheck.transform.position, .3f, GroundLayer))
+        lookHorizontal = ActiveController.RightStickX;
+        lookVertical = ActiveController.RightStickY;
+
+        if (Physics.CheckSphere(groundCheck.transform.position, .3f, groundLayer))
         {
             isGrounded = true;
         }
@@ -51,50 +59,16 @@ public class PlayerController : NetworkBehaviour
         {
             isGrounded = false;
         }
-
-        isGrounded = Controller.isGrounded;
-
-        ValueX = ActiveController.GetControl(InputControlType.LeftStickX);
-        ValueZ = ActiveController.GetControl(InputControlType.LeftStickY);
-
-        if (isGrounded)
-        {
-            VerticalVel = 0;
-        } else
-        {
-            VerticalVel -= 2;
-        }
-        MoveVector = new Vector3(0, VerticalVel, 0);
-        Controller.Move(MoveVector);
-
     }
 
-    private void PlayerAndMoveRotation()
+    private void FixedUpdate()
     {
-        var forward = PlayerCam.transform.forward;
-        var right = PlayerCam.transform.right;
+        moveDirection = new Vector3(moveHorizontal,0, moveVertical);
+        rb.AddForce(moveDirection * speed);
 
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        DesiredMoveDirection = forward * ValueZ + right * ValueX;
-
-        if (BlockRotationPlayer == false)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(DesiredMoveDirection), DesiredRotationSpeed);
-        }
-    }
-
-    private void InputMagnitude()
-    {
-        Speed = new Vector2(ValueX, ValueZ).sqrMagnitude;
-
-        if (Speed > AllowPlayerRotation)
-        {
-            PlayerAndMoveRotation();
-        }
+        lookDirection = new Vector3(0, lookHorizontal,0);
+        headDirection = new Vector3(lookVertical,0,0);
+        transform.Rotate(lookDirection);
+        head.transform.Rotate(headDirection);
     }
 }

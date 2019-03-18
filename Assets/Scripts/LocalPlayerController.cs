@@ -6,18 +6,17 @@ using Cinemachine;
 
 public class LocalPlayerController : NetworkBehaviour
 {
-    public Camera PlayerCam;
-    public CinemachineFreeLook CineMachineCamera;
+    public List<GameObject> objectsToActivate;
 
     void FixedUpdate()
     {
-        //PlayerCam = GetComponentInChildren<Camera>();
-        //CineMachineCamera = GetComponentInChildren<CinemachineFreeLook>();
 
         if (isLocalPlayer)
         {
-            PlayerCam.gameObject.SetActive(true);
-            CineMachineCamera.gameObject.SetActive(true);
+            foreach (GameObject item in objectsToActivate)
+            {
+                item.SetActive(true);
+            }
         }
     }
 }
