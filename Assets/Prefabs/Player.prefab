@@ -312,12 +312,12 @@ Rigidbody:
   m_GameObject: {fileID: 3887290311052433901}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 3
 --- !u!114 &9162722313537701618
 MonoBehaviour:
@@ -331,9 +331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7a0bbb5c8ae844084d5dec00cd2909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
-  jumpStrength: 15
-  lookSpeed: 5
+  speed: 300
+  jumpStrength: 30
+  lookSpeed: 4
   strafeVar: 0.1
   groundLayer:
     serializedVersion: 2

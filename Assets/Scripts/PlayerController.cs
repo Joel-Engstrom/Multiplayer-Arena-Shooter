@@ -77,7 +77,7 @@ public class PlayerController : NetworkBehaviour
             lookVertical = -Input.GetAxisRaw("Mouse Y");
         }
 
-        if (Physics.CheckSphere(groundCheck.transform.position, .5f, groundLayer))
+        if (Physics.CheckSphere(groundCheck.transform.position, .8f, groundLayer))
         {
             isGrounded = true;
             downForce = 0f;
