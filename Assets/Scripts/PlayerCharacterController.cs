@@ -97,4 +97,12 @@ public class PlayerCharacterController : NetworkBehaviour
             PlayerAndMoveRotation();
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.transform.position = 
+            Debug.Log("entered");
+        }
+    }
 }
