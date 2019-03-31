@@ -1,11 +1,31 @@
 fileFormatVersion: 2
-guid: 11162d1f22112104dbf27a50a85a2641
+guid: 402eba931f06ba44a878fb3ada8af123
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2186277476908879412: ImportLogs
+    100000: Blade
+    100002: Camera
+    100004: Handle
+    100006: //RootNode
+    100008: Light
+    400000: Blade
+    400002: Camera
+    400004: Handle
+    400006: //RootNode
+    400008: Light
+    2000000: Camera
+    2100000: Black
+    2100002: White
+    2100004: Material.002
+    2100006: Material.003
+    2100008: Material.001
+    2300000: Blade
+    2300002: Handle
+    3300000: Blade
+    3300002: Handle
+    4300000: Blade
+    4300002: Handle
+    10800000: Light
   externalObjects: {}
   materials:
     importMaterials: 1

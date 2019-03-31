@@ -1,10 +1,70 @@
 fileFormatVersion: 2
-guid: 11162d1f22112104dbf27a50a85a2641
+guid: 69b0ce81eac49e1488cacccfbb610701
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Barrel
+    100002: Camera
+    100004: FrontSight
+    100006: Handle
+    100008: LeftSight
+    100010: Light
+    100012: //RootNode
+    100014: RightSight
+    100016: Sprint
+    100018: SprintTip
+    100020: Trigger
+    100022: TriggerGuard
+    100024: UnderBarrel
+    400000: Barrel
+    400002: Camera
+    400004: FrontSight
+    400006: Handle
+    400008: LeftSight
+    400010: Light
+    400012: //RootNode
+    400014: RightSight
+    400016: Sprint
+    400018: SprintTip
+    400020: Trigger
+    400022: TriggerGuard
+    400024: UnderBarrel
+    2000000: Camera
+    2100000: Black
+    2100002: Red
+    2100004: Grey
+    2100006: White
+    2300000: Barrel
+    2300002: FrontSight
+    2300004: Handle
+    2300006: LeftSight
+    2300008: RightSight
+    2300010: Sprint
+    2300012: SprintTip
+    2300014: Trigger
+    2300016: TriggerGuard
+    2300018: UnderBarrel
+    3300000: Barrel
+    3300002: FrontSight
+    3300004: Handle
+    3300006: LeftSight
+    3300008: RightSight
+    3300010: Sprint
+    3300012: SprintTip
+    3300014: Trigger
+    3300016: TriggerGuard
+    3300018: UnderBarrel
+    4300000: Barrel
+    4300002: Handle
+    4300004: TriggerGuard
+    4300006: UnderBarrel
+    4300008: Trigger
+    4300010: FrontSight
+    4300012: RightSight
+    4300014: LeftSight
+    4300016: SprintTip
+    4300018: Sprint
+    10800000: Light
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
