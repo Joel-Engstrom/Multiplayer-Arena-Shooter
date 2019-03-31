@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   jumpStrength: 30
-  lookSpeed: 4
+  lookSpeed: 1
   strafeVar: 0.1
   groundLayer:
     serializedVersion: 2
