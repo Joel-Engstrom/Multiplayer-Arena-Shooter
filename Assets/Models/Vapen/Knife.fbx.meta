@@ -4,16 +4,11 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Blade
-    100002: Camera
-    100004: Handle
-    100006: //RootNode
-    100008: Light
+    100002: Handle
+    100004: //RootNode
     400000: Blade
-    400002: Camera
-    400004: Handle
-    400006: //RootNode
-    400008: Light
-    2000000: Camera
+    400002: Handle
+    400004: //RootNode
     2100000: Black
     2100002: White
     2100004: Material.002
@@ -25,7 +20,6 @@ ModelImporter:
     3300002: Handle
     4300000: Blade
     4300002: Handle
-    10800000: Light
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -4,32 +4,27 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Barrel
-    100002: Camera
-    100004: FrontSight
-    100006: Handle
-    100008: LeftSight
-    100010: Light
-    100012: //RootNode
-    100014: RightSight
-    100016: Sprint
-    100018: SprintTip
-    100020: Trigger
-    100022: TriggerGuard
-    100024: UnderBarrel
+    100002: FrontSight
+    100004: Handle
+    100006: LeftSight
+    100008: //RootNode
+    100010: RightSight
+    100012: Sprint
+    100014: SprintTip
+    100016: Trigger
+    100018: TriggerGuard
+    100020: UnderBarrel
     400000: Barrel
-    400002: Camera
-    400004: FrontSight
-    400006: Handle
-    400008: LeftSight
-    400010: Light
-    400012: //RootNode
-    400014: RightSight
-    400016: Sprint
-    400018: SprintTip
-    400020: Trigger
-    400022: TriggerGuard
-    400024: UnderBarrel
-    2000000: Camera
+    400002: FrontSight
+    400004: Handle
+    400006: LeftSight
+    400008: //RootNode
+    400010: RightSight
+    400012: Sprint
+    400014: SprintTip
+    400016: Trigger
+    400018: TriggerGuard
+    400020: UnderBarrel
     2100000: Black
     2100002: Red
     2100004: Grey
@@ -64,7 +59,6 @@ ModelImporter:
     4300014: LeftSight
     4300016: SprintTip
     4300018: Sprint
-    10800000: Light
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
